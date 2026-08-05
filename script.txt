@@ -1,6 +1,6 @@
 /* ═══ VelaLight — script.js ═══ */
 const WHATSAPP = "201223526105";
-const IMG = "https://velalight.github.io/";
+const IMG = "";
 const FALLBACK_IMG = "data:image/svg+xml;utf8," + encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><rect width='100%' height='100%' fill='#f3e8da'/><text x='50%' y='55%' font-size='90' text-anchor='middle'>🕯️</text></svg>");
 
 const CAT_NAMES = { wood:{ar:"شموع خشبية",en:"Wood Candles"}, glass:{ar:"شموع زجاجية",en:"Glass Candles"}, crystal:{ar:"شموع كريستالية",en:"Crystal Candles"}, metal:{ar:"شموع معدنية",en:"Metal Candles"}, massage:{ar:"شموع المساج",en:"Massage Candles"}, bride:{ar:"بوكس العروسة",en:"Bride Box"}, gifts:{ar:"الهدايا",en:"Gifts"} };
