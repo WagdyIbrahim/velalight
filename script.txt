@@ -1,11 +1,8 @@
 /* ═════════════════════════════════════════════════════════
-   VelaLight — script.js
-   اللغة • المنتجات • السلة • المعرض • التقييمات • حسابي
+   VelaLight — script.js (نسخة نهائية بالصور الحقيقية)
    ═════════════════════════════════════════════════════════ */
-
-/* ⚠️ مهم جدًا: عدّلي أسماء وأسعار وصور منتجاتك من هنا فقط.
-   ارفعي الصور في مجلد images بنفس الأسماء، أو استبدلي المسار بالرابط الكامل لصورتك. */
 const WHATSAPP = "201223526105";
+const IMG = "https://velalight.github.io/";   /* كل صورك بتتقرأ من هنا تلقائيًا */
 
 const FALLBACK_IMG = "data:image/svg+xml;utf8," + encodeURIComponent(
   "<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><rect width='100%' height='100%' fill='#f3e8da'/><text x='50%' y='55%' font-size='90' text-anchor='middle'>🕯️</text></svg>");
@@ -17,54 +14,31 @@ const CAT_NAMES = {
   gifts:{ar:"الهدايا",en:"Gifts"}
 };
 
+/* ═══ منتجاتك الحقيقية — عدّلي الاسم/السعر من هنا فقط لو حبيتي ═══ */
 const PRODUCTS = [
-  { id:"wood-1", cat:"wood", price:320, old:400, rating:4.9, reviews:23,
-    name:{ar:"شمعة خشبية فاخرة",en:"Luxury Wood Candle"},
-    desc:{ar:"شمعة يدوية من شمع طبيعي 100% بفتيلة خشبية يصدر عنها صوت دافئ يذكّرك بجلسات الشتاء، مع عطرك المفضل الذي تختارينه بنفسك.",
-          en:"Handmade candle of 100% natural wax with a wooden wick that crackles like a winter fireplace, in the scent of your choice."},
-    img:["images/wood-1.jpg","images/wood-2.jpg","images/wood-3.jpg"] },
+  { id:"mandala", cat:"wood", price:350, old:430, rating:4.9, reviews:34,
+    name:{ar:"شمعة المانديلا – البست سيلر",en:"Mandala Candle – Best Seller"},
+    desc:{ar:"الشمعة البست سيلر عندنا 🤎 شمعة يدوية من شمع طبيعي بفتيلة خشبية، مناسبة لكل الأماكن — المكتب، أوضة النوم، والليفينج. اختار عطرك المفضل واستمتع بساعات من الدفء.",
+          en:"Our best seller 🤎 A handmade natural-wax candle with a wooden wick, perfect for any space — office, bedroom, or living room. Choose your scent and enjoy hours of warmth."},
+    img:[IMG+"candle.jpg",IMG+"candle1.jpg",IMG+"candle2.jpg",IMG+"candle3.jpg",IMG+"candle4.jpg",IMG+"candle5.jpg"] },
 
-  { id:"glass-1", cat:"glass", price:380, old:450, rating:4.8, reviews:31,
-    name:{ar:"شمعة زجاجية معطرة",en:"Scented Glass Candle"},
-    desc:{ar:"شمعة داخل كأس زجاجي أنيق يضيف لمسة رقي لأي ركن في بيتك، بعطر فاخر يدوم طويلًا.",
-          en:"A candle in an elegant glass jar that adds sophistication to any corner of your home, with a long-lasting luxury scent."},
-    img:["images/glass-1.jpg","images/glass-2.jpg","images/glass-3.jpg"] },
-
-  { id:"crystal-1", cat:"crystal", price:450, old:null, rating:5.0, reviews:18,
-    name:{ar:"شمعة كريستالية فاخرة",en:"Luxury Crystal Candle"},
-    desc:{ar:"قطعة فنية من الكريستال تعكس الضوء بشكل ساحر، مثالية كهدية استثنائية أو centerpiece مميز.",
-          en:"A crystal art piece that reflects light magically — perfect as an exceptional gift or a statement centerpiece."},
-    img:["images/crystal-1.jpg","images/crystal-2.jpg","images/crystal-3.jpg"] },
-
-  { id:"metal-1", cat:"metal", price:300, old:375, rating:4.7, reviews:14,
-    name:{ar:"شمعة معدنية كلاسيك",en:"Classic Metal Candle"},
-    desc:{ar:"تصميم معدني أنيق بروح كلاسيكية يناسب كل الديكورات، مع عطر تختاره من تشكيلتنا الفاخرة.",
-          en:"Elegant metal design with a classic spirit that suits all décors, with a scent of your choice from our luxury collection."},
-    img:["images/metal-1.jpg","images/metal-2.jpg","images/metal-3.jpg"] },
-
-  { id:"massage-1", cat:"massage", price:280, old:350, rating:4.9, reviews:27,
-    name:{ar:"شمعة المساج الطبيعية",en:"Natural Massage Candle"},
-    desc:{ar:"شمعة مساج من زيوت طبيعية تذوب لتصبح زيت دافئ يرطب البشرة ويمنحك جلسة استرخاء كاملة.",
-          en:"A massage candle of natural oils that melts into warm oil, moisturizing your skin for a complete relaxation session."},
-    img:["images/massage-1.jpg","images/massage-2.jpg","images/massage-3.jpg"] },
-
-  { id:"bride-1", cat:"bride", price:950, old:null, rating:5.0, reviews:12,
+  { id:"bride", cat:"bride", price:950, old:null, rating:5.0, reviews:12,
     name:{ar:"بوكس العروسة الفاخر",en:"Luxury Bride Box"},
-    desc:{ar:"بوكس مميز للعرايس يضم تشكيلة شموع وتوزيعات راقية تُنسّق حسب ذوقك لتكون ذكرى خالدة في أجمل أيامك.",
-          en:"A special bride box with a curated set of candles and elegant favors, arranged to your taste for an unforgettable memory."},
-    img:["images/bride-1.jpg","images/bride-2.jpg","images/bride-3.jpg"] },
+    desc:{ar:"بوكس مميز للعرايس يضم تشكيلة شموع وتوزيعات راقية تُنسّق حسب ذوقك، لتكون ذكرى خالدة في أجمل أيامك. يشمل تغليف هدايا فاخر مجانًا.",
+          en:"A special bride box with a curated set of candles and elegant favors, arranged to your taste for an unforgettable memory. Includes free luxury gift wrapping."},
+    img:[IMG+"RR.jpg",IMG+"RRR.jpg",IMG+"RRRR.jpg",IMG+"RRRRR.jpg",IMG+"RRRRRR.jpg",IMG+"eeeee.jpg"] },
 
-  { id:"gifts-1", cat:"gifts", price:750, old:950, rating:4.9, reviews:20,
-    name:{ar:"بوكس هدايا فاخر",en:"Luxury Gift Box"},
-    desc:{ar:"بوكس هدايا يُنسّق بعناية ليجسّد ذوقك، مع اختيار العطر الذي يترك انطباعًا يدوم وذكرى ترافق كل لحظة.",
-          en:"A carefully curated gift box that embodies your taste, with a scent that leaves a lasting impression."},
-    img:["images/gifts-1.jpg","images/gifts-2.jpg","images/gifts-3.jpg"] },
+  { id:"icoffee", cat:"glass", price:380, old:450, rating:4.8, reviews:27,
+    name:{ar:"شمعة آيس كوفي",en:"Iced Coffee Candle"},
+    desc:{ar:"لعشاق القهوة ☕ شمعة زجاجية أنيقة بعطر القهوة والموكا، بتضيف لمسة دافئة وريحة تجنن لأي ركن في بيتك.",
+          en:"For coffee lovers ☕ An elegant glass candle with coffee & mocha scent that adds a warm touch and an amazing aroma to any corner of your home."},
+    img:[IMG+"icoffee1.jpg",IMG+"icoffee2.jpg",IMG+"icoffee3.jpg",IMG+"icoffee4.jpg"] },
 
-  { id:"glass-2", cat:"glass", price:520, old:null, rating:4.8, reviews:16,
-    name:{ar:"مجموعة شموع زجاجية (3 قطع)",en:"Glass Candle Set (3 pcs)"},
-    desc:{ar:"ثلاث شموع زجاجية بعطور مختلفة تنسقيها كما تحبين، لتوزعي الدفء في كل أرجاء المنزل.",
-          en:"Three glass candles in different scents, arranged your way to spread warmth across your whole home."},
-    img:["images/glass-4.jpg","images/glass-5.jpg","images/glass-6.jpg"] }
+  { id:"massage", cat:"massage", price:280, old:350, rating:4.9, reviews:21,
+    name:{ar:"شمعة المساج الطبيعية",en:"Natural Massage Candle"},
+    desc:{ar:"مش محتاجة تحجزي معاد في السبا 🤎 ولّعي شمعة المساج وسيبي الزيت الدافي يرطّب بشرتك ويمنحك جلسة استرخاء كاملة في بيتك.",
+          en:"No need to book a spa 🤎 Light the massage candle and let the warm oil moisturize your skin for a complete relaxation session at home."},
+    img:[IMG+"q.jpg",IMG+"qq.jpg",IMG+"qqq.jpg"] }
 ];
 
 const SCENTS = [
@@ -75,7 +49,6 @@ const SCENTS = [
   {ar:"مسك أبيض",en:"White Musk"},{ar:"ساندال وود",en:"Sandalwood"},{ar:"باتشولي",en:"Patchouli"}
 ];
 
-/* 5 تقييمات جاهزة بالأسامي (عربي + إنجليزي) */
 const DEFAULT_REVIEWS = [
   { name:{ar:"سارة محمد",en:"Sarah Mohamed"}, stars:5,
     text:{ar:"أجمل شمعة جربتها! الريحة بتملى المكان كله والتغليف تحفة، والتوصيل كان سريع. هطلب تاني أكيد 🤎",
@@ -90,7 +63,7 @@ const DEFAULT_REVIEWS = [
     text:{ar:"بوكس العروسة كان مثالي للفرح، والتوزيعات طلعت أحلى من المتوقع بكتير. شكرًا VelaLight ✨",
           en:"The Bride Box was perfect for the wedding, and the favors turned out better than expected. Thank you VelaLight ✨"} },
   { name:{ar:"هنا شريف",en:"Hana Sherif"}, stars:5,
-    text:{ar:"ريحة اللافندر بتريح الأعصاب بعد يوم طويل، وصوت الفتيلة الخشبية مريح جدًا. تجربة تستحقوها 🤎",
+    text:{ar:"ريحة اللافندر بتريح الأعصاب بعد يوم طويل، وصوت الفتيلة الخشبية مريح جدًا. تجربة تستاهلوها 🤎",
           en:"The lavender scent relaxes your nerves after a long day, and the wooden wick sound is so soothing. A worthy experience 🤎"} }
 ];
 
@@ -102,39 +75,27 @@ const t  = o => o ? (o[LANG] ?? o.ar) : "";
 const fmt = n => n.toLocaleString(LANG==="ar"?"ar-EG":"en-US") + " " + (LANG==="ar"?"ج":"EGP");
 const IS_PRODUCT = location.pathname.includes("product");
 
-function starsHTML(r){
-  const full = Math.round(r);
-  return "★".repeat(full) + "☆".repeat(5-full);
-}
+function starsHTML(r){ const f=Math.round(r); return "★".repeat(f)+"☆".repeat(5-f); }
 function toast(msg){
-  const el = $("#toast"); if(!el) return;
-  el.textContent = msg; el.classList.add("show");
-  clearTimeout(el._t); el._t = setTimeout(()=>el.classList.remove("show"), 2600);
+  const el=$("#toast"); if(!el) return;
+  el.textContent=msg; el.classList.add("show");
+  clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove("show"),2600);
 }
 
-/* ─────────────── اللغة (تشتغل في كل الأقسام) ─────────────── */
+/* ─────────────── اللغة ─────────────── */
 function applyLang(){
   document.documentElement.lang = LANG==="ar"?"ar":"en";
   document.documentElement.dir  = LANG==="ar"?"rtl":"ltr";
-  $$("[data-ar]").forEach(el=>{
-    const v = el.getAttribute(LANG==="ar"?"data-ar":"data-en");
-    if(v!==null) el.textContent = v;
-  });
-  $$("[data-ar-ph]").forEach(el=>{
-    el.placeholder = el.getAttribute(LANG==="ar"?"data-ar-ph":"data-en-ph") || "";
-  });
-  const lt = $("#langToggle"); if(lt) lt.textContent = LANG==="ar"?"EN":"عربي";
+  $$("[data-ar]").forEach(el=>{ const v=el.getAttribute(LANG==="ar"?"data-ar":"data-en"); if(v!==null) el.textContent=v; });
+  $$("[data-ar-ph]").forEach(el=>{ el.placeholder = el.getAttribute(LANG==="ar"?"data-ar-ph":"data-en-ph")||""; });
+  const lt=$("#langToggle"); if(lt) lt.textContent = LANG==="ar"?"EN":"عربي";
   renderAll();
 }
-function toggleLang(){
-  LANG = LANG==="ar"?"en":"ar";
-  localStorage.setItem("vl-lang", LANG);
-  applyLang();
-}
+function toggleLang(){ LANG = LANG==="ar"?"en":"ar"; localStorage.setItem("vl-lang",LANG); applyLang(); }
 
 /* ─────────────── كروت المنتجات ─────────────── */
 function cardHTML(p){
-  const off = p.old ? Math.round((1 - p.price/p.old)*100) : 0;
+  const off = p.old ? Math.round((1-p.price/p.old)*100) : 0;
   return `
   <article class="p-card">
     <a class="p-img" href="product.html?id=${p.id}">
@@ -146,218 +107,179 @@ function cardHTML(p){
       <h3 class="p-name"><a href="product.html?id=${p.id}">${t(p.name)}</a></h3>
       <div class="p-rate">${starsHTML(p.rating)} <b>${p.rating}/5</b></div>
       <div class="p-price"><strong>${fmt(p.price)}</strong>${p.old?`<del>${fmt(p.old)}</del>`:""}</div>
-      <div class="p-actions">
-        <button class="btn btn-gold" onclick="quickAdd('${p.id}')" data-ar="🛒 أضف للسلة" data-en="🛒 Add">${LANG==="ar"?"🛒 أضف للسلة":"🛒 Add"}</button>
-      </div>
+      <div class="p-actions"><button class="btn btn-gold" onclick="quickAdd('${p.id}')">${LANG==="ar"?"🛒 أضف للسلة":"🛒 Add"}</button></div>
     </div>
   </article>`;
 }
 
 let currentCat = "all";
 function renderGrid(){
-  const grid = $("#productsGrid"); if(!grid) return;
+  const grid=$("#productsGrid"); if(!grid) return;
   const list = currentCat==="all" ? PRODUCTS : PRODUCTS.filter(p=>p.cat===currentCat);
-  grid.innerHTML = list.map(cardHTML).join("");
+  grid.innerHTML = list.length ? list.map(cardHTML).join("")
+    : `<p class="cart-empty" style="grid-column:1/-1">${LANG==="ar"?"🤎 منتجات جديدة لهذه الفئة قريبًا... تابعينا":"🤎 New products for this category coming soon... stay tuned"}</p>`;
 }
-function renderRow(el, list){
-  if(!el) return;
-  el.innerHTML = list.map(cardHTML).join("");
-}
+function renderRow(el,list){ if(el) el.innerHTML=list.map(cardHTML).join(""); }
 function renderRecent(){
-  const wrap = $("#recentWrap"); if(!wrap) return;
-  const ids = JSON.parse(localStorage.getItem("vl-recent")||"[]");
-  const list = ids.map(id=>PRODUCTS.find(p=>p.id===id)).filter(Boolean);
-  if(!list.length){ wrap.hidden = true; return; }
-  wrap.hidden = false;
-  renderRow($("#recentRow"), list);
+  const wrap=$("#recentWrap"); if(!wrap) return;
+  const ids=JSON.parse(localStorage.getItem("vl-recent")||"[]");
+  const list=ids.map(id=>PRODUCTS.find(p=>p.id===id)).filter(Boolean);
+  wrap.hidden = !list.length;
+  if(list.length) renderRow($("#recentRow"),list);
 }
 function renderHomeReviews(){
-  const el = $("#homeReviews"); if(!el) return;
+  const el=$("#homeReviews"); if(!el) return;
   el.innerHTML = DEFAULT_REVIEWS.map(r=>`
     <div class="review-card">
       <div class="rc-head">
         <span class="rc-avatar">${t(r.name).charAt(0)}</span>
         <div><div class="rc-name">${t(r.name)}</div><div class="rc-stars">${starsHTML(r.stars)} ${r.stars}/5</div></div>
-      </div>
-      <p>${t(r.text)}</p>
-    </div>`).join("");
+      </div><p>${t(r.text)}</p></div>`).join("");
 }
 
 /* ─────────────── السلة ─────────────── */
 let cart = JSON.parse(localStorage.getItem("vl-cart")||"[]");
 const saveCart = () => localStorage.setItem("vl-cart", JSON.stringify(cart));
-
-function addToCart(id, scent, qty=1){
-  const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
+function addToCart(id,scent,qty=1){
+  const p=PRODUCTS.find(x=>x.id===id); if(!p) return;
   scent = scent || t(SCENTS[0]);
-  const found = cart.find(i=>i.id===id && i.scent===scent);
-  found ? found.qty += qty : cart.push({id, scent, qty});
+  const f=cart.find(i=>i.id===id&&i.scent===scent);
+  f ? f.qty+=qty : cart.push({id,scent,qty});
   saveCart(); renderCart();
   toast(LANG==="ar"?"تمت الإضافة للسلة ✅":"Added to cart ✅");
 }
 function quickAdd(id){ addToCart(id); }
-
 function renderCart(){
-  const box = $("#cartItems"); if(!box) return;
+  const box=$("#cartItems"); if(!box) return;
   $("#cartCount").textContent = cart.reduce((s,i)=>s+i.qty,0);
   if(!cart.length){
     box.innerHTML = `<p class="cart-empty">${LANG==="ar"?"السلة فاضية... ابدأ التسوق 🤎":"Your cart is empty... start shopping 🤎"}</p>`;
   } else {
     box.innerHTML = cart.map((i,idx)=>{
-      const p = PRODUCTS.find(x=>x.id===i.id);
+      const p=PRODUCTS.find(x=>x.id===i.id);
       return `<div class="ci">
         <img src="${p.img[0]}" alt="${t(p.name)}" onerror="this.src='${FALLBACK_IMG}'">
-        <div class="ci-info">
-          <strong>${t(p.name)}</strong>
-          <span class="ci-scent">🌸 ${i.scent}</span>
-          <div class="ci-qty">
-            <button onclick="ciQty(${idx},-1)">−</button><b>${i.qty}</b><button onclick="ciQty(${idx},1)">+</button>
-            <span class="muted">${fmt(p.price*i.qty)}</span>
-          </div>
+        <div class="ci-info"><strong>${t(p.name)}</strong><span class="ci-scent">🌸 ${i.scent}</span>
+          <div class="ci-qty"><button onclick="ciQty(${idx},-1)">−</button><b>${i.qty}</b><button onclick="ciQty(${idx},1)">+</button><span class="muted">${fmt(p.price*i.qty)}</span></div>
         </div>
-        <button class="ci-rm" onclick="ciRemove(${idx})" aria-label="Remove">✖</button>
-      </div>`;
+        <button class="ci-rm" onclick="ciRemove(${idx})" aria-label="Remove">✖</button></div>`;
     }).join("");
   }
-  $("#cartTotal").textContent = fmt(cart.reduce((s,i)=>s + PRODUCTS.find(p=>p.id===i.id).price*i.qty, 0));
+  $("#cartTotal").textContent = fmt(cart.reduce((s,i)=>s+PRODUCTS.find(p=>p.id===i.id).price*i.qty,0));
 }
 function ciQty(i,d){ cart[i].qty+=d; if(cart[i].qty<1) cart.splice(i,1); saveCart(); renderCart(); }
 function ciRemove(i){ cart.splice(i,1); saveCart(); renderCart(); }
-
 function openCart(){ $("#cartDrawer").classList.add("open"); $("#overlay").classList.add("show"); document.body.style.overflow="hidden"; }
 function closeCart(){ $("#cartDrawer").classList.remove("open"); $("#overlay").classList.remove("show"); document.body.style.overflow=""; }
 
 function checkout(){
   if(!cart.length) return toast(LANG==="ar"?"السلة فاضية 🤎":"Your cart is empty 🤎");
   const name=$("#dl-name").value.trim(), phone=$("#dl-phone").value.trim(), addr=$("#dl-address").value.trim();
-  if(!name || !phone) return toast(LANG==="ar"?"من فضلك اكتبي الاسم ورقم الهاتف 🙏":"Please enter your name and phone 🙏");
-  const total = cart.reduce((s,i)=>s + PRODUCTS.find(p=>p.id===i.id).price*i.qty, 0);
+  if(!name||!phone) return toast(LANG==="ar"?"من فضلك اكتبي الاسم ورقم الهاتف 🙏":"Please enter your name and phone 🙏");
+  const total = cart.reduce((s,i)=>s+PRODUCTS.find(p=>p.id===i.id).price*i.qty,0);
   const L = LANG==="ar";
-  let msg = L ? "🕯️ *طلب جديد من موقع VelaLight*\n" : "🕯️ *New order from VelaLight website*\n";
-  msg += (L?"👤 الاسم: ":"👤 Name: ")+name+"\n";
-  msg += (L?"📞 الهاتف: ":"📞 Phone: ")+phone+"\n";
+  let msg = L?"🕯️ *طلب جديد من موقع VelaLight*\n":"🕯️ *New order from VelaLight website*\n";
+  msg += (L?"👤 الاسم: ":"👤 Name: ")+name+"\n"+(L?"📞 الهاتف: ":"📞 Phone: ")+phone+"\n";
   if(addr) msg += (L?"📍 العنوان: ":"📍 Address: ")+addr+"\n";
   msg += L?"\n🛍️ *المنتجات:*\n":"\n🛍️ *Items:*\n";
-  cart.forEach(i=>{
-    const p = PRODUCTS.find(x=>x.id===i.id);
-    msg += `• ${t(p.name)} (${i.scent}) ×${i.qty} — ${fmt(p.price*i.qty)}\n`;
-  });
+  cart.forEach(i=>{ const p=PRODUCTS.find(x=>x.id===i.id); msg+=`• ${t(p.name)} (${i.scent}) ×${i.qty} — ${fmt(p.price*i.qty)}\n`; });
   msg += (L?"\n💰 الإجمالي: ":"\n💰 Total: ")+fmt(total)+(L?" (بخلاف الشحن)":" (excl. shipping)");
   msg += L?"\n💳 الدفع: InstaPay مقدمًا + الشحن كاش عند الاستلام":"\n💳 Payment: InstaPay in advance + shipping cash on delivery";
-  /* حفظ الطلب في مشتريات العميل */
-  const orders = JSON.parse(localStorage.getItem("vl-orders")||"[]");
+  const orders=JSON.parse(localStorage.getItem("vl-orders")||"[]");
   orders.unshift({date:new Date().toISOString().slice(0,10), total, items:cart.map(i=>t(PRODUCTS.find(p=>p.id===i.id).name))});
-  localStorage.setItem("vl-orders", JSON.stringify(orders));
-  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
+  localStorage.setItem("vl-orders",JSON.stringify(orders));
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,"_blank");
 }
 
 /* ─────────────── حسابي ─────────────── */
 function openAccount(){
-  const m = $("#accountModal"); if(!m) return;
-  const user = JSON.parse(localStorage.getItem("vl-user")||"null");
+  const m=$("#accountModal"); if(!m) return;
+  const user=JSON.parse(localStorage.getItem("vl-user")||"null");
   if(user){
-    $("#accountForm").hidden = true; $("#accountInfo").hidden = false;
-    $("#accHello").textContent = (LANG==="ar"?"أهلًا بيك، ":"Welcome, ")+user.name;
-    const orders = JSON.parse(localStorage.getItem("vl-orders")||"[]");
+    $("#accountForm").hidden=true; $("#accountInfo").hidden=false;
+    $("#accHello").textContent=(LANG==="ar"?"أهلًا بيك، ":"Welcome, ")+user.name;
+    const orders=JSON.parse(localStorage.getItem("vl-orders")||"[]");
     $("#accOrders").innerHTML = orders.length
-      ? "<h4>"+(LANG==="ar"?"🧾 مشترياتي":"🧾 My Orders")+"</h4>" + orders.slice(0,5).map(o=>`<p class="muted">📦 ${o.date} — ${o.items.join("، ")} — ${fmt(o.total)}</p>`).join("")
+      ? "<h4>"+(LANG==="ar"?"🧾 مشترياتي":"🧾 My Orders")+"</h4>"+orders.slice(0,5).map(o=>`<p class="muted">📦 ${o.date} — ${o.items.join("، ")} — ${fmt(o.total)}</p>`).join("")
       : `<p class="muted">${LANG==="ar"?"مفيش طلبات لسه 🤎":"No orders yet 🤎"}</p>`;
-  } else { $("#accountForm").hidden = false; $("#accountInfo").hidden = true; }
-  m.hidden = false; $("#overlay").classList.add("show");
+  } else { $("#accountForm").hidden=false; $("#accountInfo").hidden=true; }
+  m.hidden=false; $("#overlay").classList.add("show");
 }
-function closeModal(){ $("#accountModal").hidden = true; $("#overlay").classList.remove("show"); document.body.style.overflow=""; }
+function closeModal(){ $("#accountModal").hidden=true; $("#overlay").classList.remove("show"); document.body.style.overflow=""; }
 
 /* ─────────────── صفحة المنتج ─────────────── */
-let curProduct = null, curImg = 0, curQty = 1, pickedStars = 5;
+let curProduct=null, curImg=0, curQty=1, pickedStars=5;
 
 function initProductPage(){
-  const id = new URLSearchParams(location.search).get("id");
+  const id=new URLSearchParams(location.search).get("id");
   curProduct = PRODUCTS.find(p=>p.id===id) || PRODUCTS[0];
-  const p = curProduct;
+  const p=curProduct;
+  let rec=JSON.parse(localStorage.getItem("vl-recent")||"[]").filter(x=>x!==p.id);
+  rec.unshift(p.id); localStorage.setItem("vl-recent",JSON.stringify(rec.slice(0,8)));
 
-  /* سجّليه في "شاهدته مؤخرًا" */
-  let rec = JSON.parse(localStorage.getItem("vl-recent")||"[]").filter(x=>x!==p.id);
-  rec.unshift(p.id); localStorage.setItem("vl-recent", JSON.stringify(rec.slice(0,8)));
-
-  /* SEO ديناميكي لكل منتج */
   document.title = `${t(p.name)} | VelaLight`;
-  const ld = {"@context":"https://schema.org","@type":"Product",
-    name:t(p.name), image:p.img.map(i=>location.origin+"/"+i), description:t(p.desc),
+  const ld={"@context":"https://schema.org","@type":"Product",name:t(p.name),image:p.img,description:t(p.desc),
     brand:{"@type":"Brand","name":"VelaLight"},
     aggregateRating:{"@type":"AggregateRating",ratingValue:p.rating,reviewCount:p.reviews},
     offers:{"@type":"Offer",price:p.price,priceCurrency:"EGP",availability:"https://schema.org/InStock"}};
-  const s = document.createElement("script"); s.type="application/ld+json"; s.textContent=JSON.stringify(ld);
+  const s=document.createElement("script"); s.type="application/ld+json"; s.textContent=JSON.stringify(ld);
   document.head.appendChild(s);
 
-  renderProductInfo();
-  renderGallery();
-  renderReviews();
-  renderRow($("#pdRelated"), PRODUCTS.filter(x=>x.id!==p.id).slice(0,6));
-
-  /* العطور */
+  renderProductInfo(); renderGallery(); renderReviews();
+  renderRow($("#pdRelated"), PRODUCTS.filter(x=>x.id!==p.id));
   $("#pdScent").innerHTML = SCENTS.map(sc=>`<option>${t(sc)}</option>`).join("");
-
-  /* الكمية */
-  $("#qtyMinus").onclick = ()=>{ curQty=Math.max(1,curQty-1); $("#qtyVal").textContent=curQty; };
-  $("#qtyPlus").onclick  = ()=>{ curQty++; $("#qtyVal").textContent=curQty; };
-
-  /* الأزرار */
-  $("#pdAddCart").onclick = ()=> addToCart(p.id, $("#pdScent").value, curQty);
-  $("#pdWhats").onclick = ()=>{
-    const msg = (LANG==="ar"
-      ? `🕯️ أهلًا VelaLight، عايز أطلب:\n${t(p.name)} — عطر ${$("#pdScent").value} — كمية ${curQty}\n💰 ${fmt(p.price*curQty)}`
-      : `🕯️ Hello VelaLight, I'd like to order:\n${t(p.name)} — ${$("#pdScent").value} scent — qty ${curQty}\n💰 ${fmt(p.price*curQty)}`);
+  $("#qtyMinus").onclick=()=>{ curQty=Math.max(1,curQty-1); $("#qtyVal").textContent=curQty; };
+  $("#qtyPlus").onclick =()=>{ curQty++; $("#qtyVal").textContent=curQty; };
+  $("#pdAddCart").onclick=()=>addToCart(p.id,$("#pdScent").value,curQty);
+  $("#pdWhats").onclick=()=>{
+    const msg=(LANG==="ar"
+      ?`🕯️ أهلًا VelaLight، عايز أطلب:\n${t(p.name)} — عطر ${$("#pdScent").value} — كمية ${curQty}\n💰 ${fmt(p.price*curQty)}`
+      :`🕯️ Hello VelaLight, I'd like to order:\n${t(p.name)} — ${$("#pdScent").value} scent — qty ${curQty}\n💰 ${fmt(p.price*curQty)}`);
     window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,"_blank");
   };
 }
 
 function renderProductInfo(){
-  const p = curProduct; if(!p) return;
-  $("#crumbName").textContent = t(p.name);
-  $("#pdName").textContent  = t(p.name);
-  $("#pdDesc").textContent  = t(p.desc);
-  $("#pdStars").textContent = starsHTML(p.rating);
-  $("#pdScore").textContent = `${p.rating}/5`;
-  $("#pdCount").textContent = LANG==="ar"?`(${p.reviews} تقييم)`:`(${p.reviews} reviews)`;
-  $("#pdPrice").textContent = fmt(p.price);
-  $("#pdOld").textContent   = p.old?fmt(p.old):"";
-  $("#pdOld").style.display = p.old?"":"none";
-  const off = p.old?Math.round((1-p.price/p.old)*100):0;
-  $("#pdOff").textContent   = off?`-${off}%`:"";
-  $("#pdOff").style.display = off?"":"none";
-  $("#pdMainImg").alt = t(p.name);
+  const p=curProduct; if(!p) return;
+  $("#crumbName").textContent=t(p.name);
+  $("#pdName").textContent=t(p.name);
+  $("#pdDesc").textContent=t(p.desc);
+  $("#pdStars").textContent=starsHTML(p.rating);
+  $("#pdScore").textContent=`${p.rating}/5`;
+  $("#pdCount").textContent=LANG==="ar"?`(${p.reviews} تقييم)`:`(${p.reviews} reviews)`;
+  $("#pdPrice").textContent=fmt(p.price);
+  $("#pdOld").textContent=p.old?fmt(p.old):""; $("#pdOld").style.display=p.old?"":"none";
+  const off=p.old?Math.round((1-p.price/p.old)*100):0;
+  $("#pdOff").textContent=off?`-${off}%`:""; $("#pdOff").style.display=off?"":"none";
 }
 
-/* المعرض: كل الصور تظهر + أسهم + سحب باللمس */
+/* المعرض: كل الصور تظهر + أسهم + سحب */
 function renderGallery(){
-  const p = curProduct; if(!p) return;
-  curImg = 0;
-  $("#pdThumbs").innerHTML = p.img.map((src,i)=>
+  const p=curProduct; if(!p) return;
+  curImg=0;
+  $("#pdThumbs").innerHTML=p.img.map((src,i)=>
     `<img src="${src}" alt="${t(p.name)} ${i+1}" class="${i===0?'on':''}" loading="lazy" onerror="this.src='${FALLBACK_IMG}'" data-i="${i}">`).join("");
   $$("#pdThumbs img").forEach(th=>th.onclick=()=>showImg(+th.dataset.i));
   showImg(0);
 }
 function showImg(i){
-  const p = curProduct; if(!p) return;
-  curImg = (i + p.img.length) % p.img.length;
-  const main = $("#pdMainImg");
-  main.src = p.img[curImg]; main.onerror = ()=>{ main.src = FALLBACK_IMG; };
-  main.alt = t(p.name);
-  $$("#pdThumbs img").forEach((th,idx)=>th.classList.toggle("on", idx===curImg));
+  const p=curProduct; if(!p) return;
+  curImg=(i+p.img.length)%p.img.length;
+  const main=$("#pdMainImg");
+  main.src=p.img[curImg]; main.onerror=()=>{main.src=FALLBACK_IMG;};
+  main.alt=t(p.name);
+  $$("#pdThumbs img").forEach((th,idx)=>th.classList.toggle("on",idx===curImg));
 }
 function bindGallery(){
-  $("#galPrev")?.addEventListener("click", ()=>showImg(curImg-1));
-  $("#galNext")?.addEventListener("click", ()=>showImg(curImg+1));
-  const main = $(".pd-main");
-  if(main){
-    let x0=null;
-    main.addEventListener("touchstart", e=>x0=e.touches[0].clientX, {passive:true});
-    main.addEventListener("touchend", e=>{
-      if(x0===null) return;
-      const dx = e.changedTouches[0].clientX - x0;
-      if(Math.abs(dx)>40) dx>0 ? showImg(curImg-1) : showImg(curImg+1);
-      x0=null;
-    }, {passive:true});
+  $("#galPrev")?.addEventListener("click",()=>showImg(curImg-1));
+  $("#galNext")?.addEventListener("click",()=>showImg(curImg+1));
+  const main=$(".pd-main");
+  if(main){ let x0=null;
+    main.addEventListener("touchstart",e=>x0=e.touches[0].clientX,{passive:true});
+    main.addEventListener("touchend",e=>{ if(x0===null)return;
+      const dx=e.changedTouches[0].clientX-x0;
+      if(Math.abs(dx)>40) dx>0?showImg(curImg-1):showImg(curImg+1);
+      x0=null; },{passive:true});
   }
 }
 
@@ -367,103 +289,82 @@ function getAllReviews(){
   return [...saved, ...DEFAULT_REVIEWS];
 }
 function renderReviews(){
-  const list = $("#reviewList"); if(!list || !curProduct) return;
-  const all = getAllReviews();
-  const avg = (all.reduce((s,r)=>s+r.stars,0)/all.length).toFixed(1);
-  $("#revAvg").textContent = `${avg}/5`;
-  $("#revAvgStars").textContent = starsHTML(+avg);
-  list.innerHTML = all.map(r=>{
-    const nm = typeof r.name==="object"?t(r.name):r.name;
-    const tx = typeof r.text==="object"?t(r.text):r.text;
-    return `<div class="review-card">
-      <div class="rc-head">
-        <span class="rc-avatar">${nm.charAt(0)}</span>
-        <div><div class="rc-name">${nm} ${r.saved?'✨':''}</div><div class="rc-stars">${starsHTML(r.stars)} ${r.stars}/5</div></div>
-      </div><p>${tx}</p></div>`;
+  const list=$("#reviewList"); if(!list||!curProduct) return;
+  const all=getAllReviews();
+  const avg=(all.reduce((s,r)=>s+r.stars,0)/all.length).toFixed(1);
+  $("#revAvg").textContent=`${avg}/5`;
+  $("#revAvgStars").textContent=starsHTML(+avg);
+  list.innerHTML=all.map(r=>{
+    const nm=typeof r.name==="object"?t(r.name):r.name;
+    const tx=typeof r.text==="object"?t(r.text):r.text;
+    return `<div class="review-card"><div class="rc-head">
+      <span class="rc-avatar">${nm.charAt(0)}</span>
+      <div><div class="rc-name">${nm} ${r.saved?'✨':''}</div><div class="rc-stars">${starsHTML(r.stars)} ${r.stars}/5</div></div>
+    </div><p>${tx}</p></div>`;
   }).join("");
 }
 function bindReviewForm(){
-  const pick = $("#starPick"); if(!pick) return;
-  pick.querySelectorAll("button").forEach(b=>{
-    b.onclick = ()=>{ pickedStars = +b.dataset.v;
-      pick.querySelectorAll("button").forEach(x=>x.classList.toggle("on", +x.dataset.v<=pickedStars)); };
-  });
-  pick.querySelector("button[data-v='5']")?.classList.add("on");
-  pick.querySelectorAll("button").forEach(x=>{ if(+x.dataset.v<=5) x.classList.add("on"); });
-
-  $("#reviewForm")?.addEventListener("submit", e=>{
+  const pick=$("#starPick"); if(!pick) return;
+  const paint=()=>pick.querySelectorAll("button").forEach(x=>x.classList.toggle("on",+x.dataset.v<=pickedStars));
+  pick.querySelectorAll("button").forEach(b=>b.onclick=()=>{ pickedStars=+b.dataset.v; paint(); });
+  paint();
+  $("#reviewForm")?.addEventListener("submit",e=>{
     e.preventDefault();
-    const name = $("#rvName").value.trim(), text = $("#rvText").value.trim();
-    if(!name || !text) return;
-    const saved = JSON.parse(localStorage.getItem("vl-reviews-"+curProduct.id)||"[]");
-    saved.unshift({name, text, stars:pickedStars, saved:true});
-    localStorage.setItem("vl-reviews-"+curProduct.id, JSON.stringify(saved));
-    e.target.reset(); pickedStars=5; renderReviews();
+    const name=$("#rvName").value.trim(), text=$("#rvText").value.trim();
+    if(!name||!text) return;
+    const saved=JSON.parse(localStorage.getItem("vl-reviews-"+curProduct.id)||"[]");
+    saved.unshift({name,text,stars:pickedStars,saved:true});
+    localStorage.setItem("vl-reviews-"+curProduct.id,JSON.stringify(saved));
+    e.target.reset(); pickedStars=5; paint(); renderReviews();
     toast(LANG==="ar"?"شكرًا لتقييمك 🤎":"Thank you for your review 🤎");
   });
 }
 
-/* ─────────────── الرسم الكامل (بيتندم مع تغيير اللغة) ─────────────── */
+/* ─────────────── الرسم الكامل ─────────────── */
 function renderAll(){
   renderGrid();
-  renderRow($("#likeRow"), [...PRODUCTS].sort(()=>Math.random()-.5).slice(0,6));
-  renderRecent();
-  renderHomeReviews();
-  renderCart();
-  if(IS_PRODUCT && curProduct){ renderProductInfo(); renderGallery(); renderReviews(); renderRow($("#pdRelated"), PRODUCTS.filter(x=>x.id!==curProduct.id).slice(0,6));
-    const sel=$("#pdScent"); if(sel){ const cur=sel.selectedIndex; sel.innerHTML=SCENTS.map(sc=>`<option>${t(sc)}</option>`).join(""); sel.selectedIndex=Math.max(0,cur); } }
+  renderRow($("#likeRow"),[...PRODUCTS].sort(()=>Math.random()-.5).slice(0,6));
+  renderRecent(); renderHomeReviews(); renderCart();
+  if(IS_PRODUCT&&curProduct){
+    renderProductInfo(); renderGallery(); renderReviews();
+    renderRow($("#pdRelated"),PRODUCTS.filter(x=>x.id!==curProduct.id));
+    const sel=$("#pdScent");
+    if(sel){ const c=sel.selectedIndex; sel.innerHTML=SCENTS.map(sc=>`<option>${t(sc)}</option>`).join(""); sel.selectedIndex=Math.max(0,c); }
+  }
 }
 
 /* ─────────────── التهيئة ─────────────── */
-document.addEventListener("DOMContentLoaded", ()=>{
-  /* الهيدر والموبايل */
-  $("#navBurger")?.addEventListener("click", ()=>$("#mainNav").classList.toggle("open"));
-  $("#langToggle")?.addEventListener("click", toggleLang);
-
-  /* السلة */
-  $("#cartBtn")?.addEventListener("click", openCart);
-  $("#cartClose")?.addEventListener("click", closeCart);
-  $("#overlay")?.addEventListener("click", ()=>{ closeCart(); closeModal(); $("#abandonModal") && ($("#abandonModal").hidden=true); });
-  $("#clearCart")?.addEventListener("click", ()=>{ cart=[]; saveCart(); renderCart(); });
-  $("#checkoutBtn")?.addEventListener("click", checkout);
-
-  /* حسابي */
-  $("#accountBtn")?.addEventListener("click", openAccount);
-  $$(".modal-close").forEach(b=>b.addEventListener("click", closeModal));
-  $("#accSave")?.addEventListener("click", ()=>{
+document.addEventListener("DOMContentLoaded",()=>{
+  $("#navBurger")?.addEventListener("click",()=>$("#mainNav").classList.toggle("open"));
+  $("#langToggle")?.addEventListener("click",toggleLang);
+  $("#cartBtn")?.addEventListener("click",openCart);
+  $("#cartClose")?.addEventListener("click",closeCart);
+  $("#overlay")?.addEventListener("click",()=>{ closeCart(); closeModal(); const a=$("#abandonModal"); if(a) a.hidden=true; });
+  $("#clearCart")?.addEventListener("click",()=>{ cart=[]; saveCart(); renderCart(); });
+  $("#checkoutBtn")?.addEventListener("click",checkout);
+  $("#accountBtn")?.addEventListener("click",openAccount);
+  $$(".modal-close").forEach(b=>b.addEventListener("click",closeModal));
+  $("#accSave")?.addEventListener("click",()=>{
     const name=$("#acc-name").value.trim(), phone=$("#acc-phone").value.trim();
     if(!name||!phone) return toast(LANG==="ar"?"اكتبي الاسم ورقم الهاتف 🙏":"Please enter name and phone 🙏");
-    localStorage.setItem("vl-user", JSON.stringify({name, phone, address:$("#acc-address").value.trim()}));
+    localStorage.setItem("vl-user",JSON.stringify({name,phone,address:$("#acc-address").value.trim()}));
     toast(LANG==="ar"?"أهلًا بيك في VelaLight 🤎":"Welcome to VelaLight 🤎");
     closeModal();
   });
-  $("#accLogout")?.addEventListener("click", ()=>{ localStorage.removeItem("vl-user"); closeModal(); });
-
-  /* تعبئة بيانات التوصيل من الحساب المحفوظ */
-  const user = JSON.parse(localStorage.getItem("vl-user")||"null");
+  $("#accLogout")?.addEventListener("click",()=>{ localStorage.removeItem("vl-user"); closeModal(); });
+  const user=JSON.parse(localStorage.getItem("vl-user")||"null");
   if(user){ ["dl-name","dl-phone","dl-address"].forEach((id,i)=>{ const el=$("#"+id); if(el) el.value=[user.name,user.phone,user.address][i]||""; }); }
-
-  /* فلترة التصنيفات */
-  $$(".chip").forEach(ch=>ch.addEventListener("click", ()=>{
+  $$(".chip").forEach(ch=>ch.addEventListener("click",()=>{
     $$(".chip").forEach(c=>c.classList.remove("active"));
-    ch.classList.add("active");
-    currentCat = ch.dataset.cat;
-    renderGrid();
+    ch.classList.add("active"); currentCat=ch.dataset.cat; renderGrid();
   }));
-  const qCat = new URLSearchParams(location.search).get("cat");
-  if(qCat){ currentCat=qCat;
-    $$(".chip").forEach(c=>c.classList.toggle("active", c.dataset.cat===qCat)); }
-
-  /* صفحات */
+  const qCat=new URLSearchParams(location.search).get("cat");
+  if(qCat){ currentCat=qCat; $$(".chip").forEach(c=>c.classList.toggle("active",c.dataset.cat===qCat)); }
   if(IS_PRODUCT){ initProductPage(); bindGallery(); bindReviewForm(); }
-  else {
-    /* تذكير السلة (مرة واحدة في الجلسة) */
-    if(cart.length && !sessionStorage.getItem("vl-remind")){
-      setTimeout(()=>{ $("#abandonModal") && ($("#abandonModal").hidden=false); sessionStorage.setItem("vl-remind","1"); }, 2500);
-    }
-    $("#abandonGo")?.addEventListener("click", ()=>{ $("#abandonModal").hidden=true; openCart(); });
-    $("#abandonNo")?.addEventListener("click", ()=>{ $("#abandonModal").hidden=true; });
+  else if(cart.length && !sessionStorage.getItem("vl-remind")){
+    setTimeout(()=>{ const a=$("#abandonModal"); if(a) a.hidden=false; sessionStorage.setItem("vl-remind","1"); },2500);
   }
-
+  $("#abandonGo")?.addEventListener("click",()=>{ $("#abandonModal").hidden=true; openCart(); });
+  $("#abandonNo")?.addEventListener("click",()=>{ $("#abandonModal").hidden=true; });
   applyLang();
 });
