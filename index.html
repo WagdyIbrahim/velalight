@@ -1477,6 +1477,67 @@ observeReveals();
 updateCartUI();
 window.addEventListener('load',()=>setTimeout(()=>$('#loader').classList.add('hide'),350));
 setTimeout(()=>$('#loader').classList.add('hide'),2500);
+/* ===== Firebase product synchronization bridge ===== */
+window.__VL_SYNC_PRODUCTS=function(fbProducts){
+  const base=new Map(PRODUCTS.map(p=>[String(p.id),{...p}]));
+
+  (fbProducts||[]).forEach(raw=>{
+    const slug=String(raw.id_??raw.slug??raw.pid??raw.id??"");
+    if(!slug)return;
+    if(raw.active===false){base.delete(slug);return;}
+
+    const previous=base.get(slug)||{};
+    let images=raw.images||raw.imgs||(raw.img?[raw.img]:(previous.images||[]));
+    if(!Array.isArray(images))images=[images];
+    images=images.filter(Boolean).map(img=>{
+      const v=String(img);
+      return v.startsWith("http")?v:IMG+v;
+    });
+
+    const badgeRaw=String(raw.badge??previous.badge??"").toLowerCase();
+    const badge=(badgeRaw.includes("best")||badgeRaw.includes("الأكثر")||badgeRaw.includes("مبيع"))?"best":(raw.badge??previous.badge??"");
+
+    base.set(slug,{
+      ...previous,
+      id:isNaN(Number(slug))?slug:Number(slug),
+      cat:raw.cat||previous.cat||"wood",
+      price:Number(raw.price??previous.price??0),
+      old:Number(raw.old??previous.old??0)||0,
+      badge,
+      name_ar:raw.name_ar||raw.name||previous.name_ar||"",
+      name_en:raw.name_en||raw.nameEn||previous.name_en||"",
+      images:images.length?images:(previous.images||[]),
+      captions:Array.isArray(raw.captions)?raw.captions:(previous.captions||[]),
+      desc_ar:raw.desc_ar||raw.desc||previous.desc_ar||"",
+      desc_en:raw.desc_en||raw.descEn||previous.desc_en||"",
+      scents:Array.isArray(raw.scents)?raw.scents:(previous.scents||[])
+    });
+  });
+
+  PRODUCTS.splice(0,PRODUCTS.length,...base.values());
+  renderProducts();
+
+  if(qvId!=null){
+    if(PRODUCTS.some(p=>String(p.id)===String(qvId)))renderQuick(qvId,true);
+    else closeModals();
+  }
+  updateCartUI();
+  console.log("Firebase products synced:",PRODUCTS.length);
+};
+</script>
+<!-- تحميل Firebase as Module -->
+<script type="module" src="firebase.js"></script>
+<script type="module">
+(function(){
+  function start(){
+    if(!window.FB||typeof window.FB.watch!=="function")return;
+    window.FB.watch("products",function(products){
+      if(typeof window.__VL_SYNC_PRODUCTS==="function")window.__VL_SYNC_PRODUCTS(products);
+    });
+  }
+  if(window.FB)start();
+  else window.addEventListener("fb-ready",start,{once:true});
+})();
 </script>
 </body>
 </html>
